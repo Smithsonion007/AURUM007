@@ -1,6 +1,6 @@
-use aurum_pentest::{merkle::{leaf_hash, merkle_root}};
+use aurum_pentest::merkle::merkle_root;
 use serde::Serialize;
-use tiny_http::{Response, Server};
+use tiny_http::{Header, Response, Server};
 
 #[derive(Serialize, Default)]
 struct Status{ tip_height: u64, mempool_len: usize, state_root_hex: String }
@@ -13,7 +13,7 @@ fn main(){
   println!("AURUM node on http://localhost:8080  (GET /status)");
   for request in server.incoming_requests(){
     match (request.method().as_str(), request.url()){
-      ("GET","/status")=>{ let body=serde_json::to_string(&status).unwrap(); let resp=Response::from_string(body).with_header("Content-Type: application/json".parse().unwrap()); let _=request.respond(resp); },
+      ("GET","/status")=>{ let body=serde_json::to_string(&status).unwrap(); let resp=Response::from_string(body).with_header("Content-Type: application/json".parse::<Header>().unwrap()); let _=request.respond(resp); },
       _=>{ let _=request.respond(Response::from_string("Not Found").with_status_code(404)); }
     }
   }
