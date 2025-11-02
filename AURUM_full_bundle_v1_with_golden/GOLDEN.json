@@ -1,0 +1,5 @@
+{
+  "version": "v1",
+  "notes": "Run `cargo run -p aurum-pentest --bin gen_golden` to regenerate deterministically.",
+  "generated": false
+}

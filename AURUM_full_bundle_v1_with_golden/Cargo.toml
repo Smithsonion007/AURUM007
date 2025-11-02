@@ -1,0 +1,3 @@
+[workspace]
+members = ["aurum-pentest","aurum-node"]
+resolver = "2"

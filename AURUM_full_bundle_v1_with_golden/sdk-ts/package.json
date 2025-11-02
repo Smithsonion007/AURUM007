@@ -1,0 +1,15 @@
+{
+  "name": "aurum-sdk",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "blake3": "^2.1.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}
